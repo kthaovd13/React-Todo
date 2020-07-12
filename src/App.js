@@ -71,9 +71,11 @@ class App extends React.Component {
   clearCompleted = e => {
     e.preventDefault();
     this.setState({
-      task: this.state.chores.filter(task => !task.completed)
-    })
-  }
+      chores: this.state.chores.filter(task => {
+        return !task.completed;
+      })
+    });
+  };
 
   render() {
     return (
@@ -82,7 +84,8 @@ class App extends React.Component {
         <ToDoForm addTask={this.addTask}/>
         <ToDoList 
           chores = {this.state.chores}
-          toggleTask = {this.toggleTask} 
+          toggleTask = {this.toggleTask}
+          clearCompleted = {this.clearCompleted}
         />
       </div>
     );
